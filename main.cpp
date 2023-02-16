@@ -31,8 +31,6 @@ int main() {
   playerParameters.posX = WIDTH-playerParameters.posX;
   Paddle player2(playerParameters,{KEY_UP,KEY_DOWN});
   Ball ball(WIDTH/2.0f, HEIGHT/2.0f, WIDTH/80.0f);
-  playerParameters.posX = WIDTH-100.0f;
-  Paddle player3(playerParameters,{KEY_R,KEY_F});
   
   player1.velocity = {0.0f,250.0f};
   player2.velocity = {0.0f,250.0f};
@@ -57,7 +55,6 @@ int main() {
       ClearBackground(BLACK);
       player1.Draw();
       player2.Draw();
-      player3.Draw();
       ball.Draw();
       DrawText(flag.c_str(),WIDTH/2.0f,HEIGHT/4.0f,30,RAYWHITE);
     EndDrawing();
@@ -89,7 +86,6 @@ int main() {
     //Get Player Input
     player1.Input();
     player2.Input();
-    player3.Input();
     
     //Detect Ceiling/Floor
     if(ball.obj.y < 0+(ball.obj.radius)) 
@@ -113,9 +109,6 @@ int main() {
           break;
         case 1:
           selectedPong = player2;
-          break;
-        case 2:
-          selectedPong = player3;
           break;
       }
       if(CheckCollisionCircleRec(ball.pos,ball.obj.radius,selectedPong.obj)) 
